@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.sites.models import Site
 
-admin.site.unregister(Site)
+#admin.site.unregister(Site)
 
 def trigger_error(request):
     division_by_zero = 1 / 0
