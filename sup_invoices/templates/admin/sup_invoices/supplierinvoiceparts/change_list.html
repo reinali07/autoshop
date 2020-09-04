@@ -1,0 +1,9 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_list %}
+
+{% block object-tools-items %}
+    {{ block.super }}
+    <li>
+        <a href="http://127.0.0.1:8000/admin/sup_invoices/prices/add/" class="btn btn-high btn-success">Add New</a>
+    </li>
+{% endblock %}

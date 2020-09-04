@@ -1,0 +1,80 @@
+{% for object in sorted_jobs %}
+    <h1>{{ model }}: {{ object.0.order }}</h1>
+    <p>Client: {{ object.0.order.client.clientcontact.all.0.last_name }}, {{ object.0.order.client.clientcontact.all.0.first_name }} {% if object.0.order.client.clientcontact.all.0.nickname %} ({{ object.0.order.client.clientcontact.all.0.nickname }}) {% endif %}</p>
+    <p>Vehicle: {{ object.0.order.client.clientvehicle.vehicle }} </p>
+    <p>License: {{ object.0.order.client.licenseplate }}</p>
+    <p>VIN: {{ object.0.order.client.vin }}</p>
+    <hr/>
+    {% for job in object %}
+
+        <h2>Date: {{ job.date }}</h2>
+        {% if job.status %}
+            <h3>Status: {% if job.status == 'p' %} Paid {% elif job.status == 'b' %} Billed {% elif job.status == 'o' %} Ongoing {% elif job.status == 'c' %} Cancelled {% endif %}</h3>
+        {% endif %}
+        <p>Technician: {{ job.technician }} </p>
+        <p>Client comments: {{ job.customer_comments }}</p>
+        <p>Technician comments: {{ job.technician_comments }} </p>
+        <p>Test results: {{ job.test_results }} </p>
+        <p>Hours charged: {{ job.hours_charged }} </p>
+        <p>Labour Guide hours: {{ job.labour_guide }} </p>
+        <p>Labour rate: {{ global_preferences.workorder__labour_rate }}</p>
+        <p>Labour charged: {{ job.labour_charged }} </p>
+
+        <h3>Parts:</h3>
+        <table>
+            <tr>
+                <td>Description</td>
+                <td>Quantity</td>
+            </tr>
+            {% for wkp in job.lineparts_set.all %}
+                <tr>    
+                    <td>{{ wkp.part.description }}</td>
+                    <td>{{ wkp.quantity }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    <hr/>
+    {% endfor %}
+
+    <pdf:nextpage>
+{% endfor %}
+
+
+<!--
+<h1>Workorder: {{ workorder_list.0.workorder }}</h1>
+<p>Client: {{ workorder_list.0.client.clientcontact.all.0.last_name }}, {{ workorder_list.0.client.clientcontact.all.0.first_name }} {% if workorder_list.0.client.clientcontact.all.0.nickname %} ({{ workorder_list.0.client.clientcontact.all.0.nickname }}) {% endif %}</p>
+<p>Vehicle: {{ workorder_list.0.client.clientvehicle.year }} {{ workorder_list.0.client.clientvehicle.vehicle_makemodel.all.0 }} </p>
+<p>License: {{ workorder_list.0.client.licenseplate }}</p>
+<p>VIN: {{ workorder_list.0.client.vin }}</p>
+
+{% for workorder in workorder_list %}
+<h2>Date: {{ workorder.date }}</h2>
+<h3>Status: {% if workorder.status == 'p' %} Paid {% elif workorder.status == 'b' %} Billed {% elif workorder.status == 'w' %} Work in Progress {% elif workorder.status == 'e' %} Estimation {% endif %}</h3>
+<p>Technician: {{ workorder.technician }} </p>
+<p>Client comments: {{ workorder.customer_comments }}</p>
+<p>Technician comments: {{ workorder.technician_comments }} </p>
+<p>Test results: {{ workorder.test_results }} </p>
+<p>Hours charged: {{ workorder.hours_charged }} </p>
+<p>Labour Guide hours: {{ workorder.labour_guide }} </p>
+<p>Labour rate: </p>
+<p>Labour charged: {{ workorder.labour_charged }} </p>
+
+<table>
+    <tr>
+        <td>Brand</td>
+        <td>Part Number</td>
+        <td>Quantity</td>
+    </tr>
+    {% for wkp in workorder.workorderparts_set.all %}
+    <tr>    
+        <td>{{ wkp.part.brand }}</td>
+        <td>{{ wkp.part.part_number }}</td> 
+        <td>{{ wkp.quantity }}</td>
+    </tr>
+    {% endfor %}   
+</table>
+
+{% endfor %}
+
+-->

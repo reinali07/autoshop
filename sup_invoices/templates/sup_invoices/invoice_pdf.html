@@ -1,0 +1,88 @@
+{% for object in sorted_invoices %}
+    <h1>PO Number: {{ object.0.po }}</h1>
+    <hr/>
+    {% for invoice in object %}
+
+        {% if invoice.is_return %}
+            <h2>Return Invoice</h2>
+        {% endif %}
+        <h2>Invoice Number: {{ invoice.supplier_invoice }} </h2>
+        <h3>Date: {{ invoice.date }}</h3>
+        <p>Supplier: {{ invoice.supplier }} </p>
+
+        <h3>Parts:</h3>
+        <table>
+            <tr>
+                <td>Part</td>
+                <td>Description</td>
+                {% if invoice.is_return %}
+                    <td>Returned Quantity</td>
+                {% else %}
+                    <td>Quantity</td>
+                {% endif %}
+                <td>List Price</td>
+                <td>Cost</td>
+                <td>Promotion?</td>
+                <td>Package Size</td>
+            </tr>
+            {% for wkp in invoice.supplierinvoiceparts_set.all %}
+                <tr>
+                    <td>{{ wkp.part }}</td> 
+                    <td>{{ wkp.part.description }}</td>
+                    {% if invoice.is_return %}
+                        <td>{{ wkp.retqty }}</td>
+                    {% else %}
+                        <td>{{ wkp.quantity}} </td>
+                    {% endif %}
+                    <td>{{ wkp.list_price }}</td>
+                    <td>{{ wkp.cost }}</td>
+                    <td>{{ wkp.is_promo }}</td>
+                    <td>{{ wkp.package_size }} {{wkp.part.internal.all.0.standard_unit}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    
+    <hr/>
+    {% endfor %}
+
+<pdf:nextpage>
+{% endfor %}
+
+
+<!--
+<h1>Workorder: {{ workorder_list.0.workorder }}</h1>
+<p>Client: {{ workorder_list.0.client.clientcontact.all.0.last_name }}, {{ workorder_list.0.client.clientcontact.all.0.first_name }} {% if workorder_list.0.client.clientcontact.all.0.nickname %} ({{ workorder_list.0.client.clientcontact.all.0.nickname }}) {% endif %}</p>
+<p>Vehicle: {{ workorder_list.0.client.clientvehicle.year }} {{ workorder_list.0.client.clientvehicle.vehicle_makemodel.all.0 }} </p>
+<p>License: {{ workorder_list.0.client.licenseplate }}</p>
+<p>VIN: {{ workorder_list.0.client.vin }}</p>
+
+{% for workorder in workorder_list %}
+<h2>Date: {{ workorder.date }}</h2>
+<h3>Status: {% if workorder.status == 'p' %} Paid {% elif workorder.status == 'b' %} Billed {% elif workorder.status == 'w' %} Work in Progress {% elif workorder.status == 'e' %} Estimation {% endif %}</h3>
+<p>Technician: {{ workorder.technician }} </p>
+<p>Client comments: {{ workorder.customer_comments }}</p>
+<p>Technician comments: {{ workorder.technician_comments }} </p>
+<p>Test results: {{ workorder.test_results }} </p>
+<p>Hours charged: {{ workorder.hours_charged }} </p>
+<p>Labour Guide hours: {{ workorder.labour_guide }} </p>
+<p>Labour rate: </p>
+<p>Labour charged: {{ workorder.labour_charged }} </p>
+
+<table>
+    <tr>
+        <td>Brand</td>
+        <td>Part Number</td>
+        <td>Quantity</td>
+    </tr>
+    {% for wkp in workorder.workorderparts_set.all %}
+    <tr>    
+        <td>{{ wkp.part.brand }}</td>
+        <td>{{ wkp.part.part_number }}</td> 
+        <td>{{ wkp.quantity }}</td>
+    </tr>
+    {% endfor %}   
+</table>
+
+{% endfor %}
+
+-->
