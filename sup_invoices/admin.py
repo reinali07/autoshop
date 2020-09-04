@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import *
 from .inlines import *
-from model_clone import CloneModelAdmin
 from .forms import *
 from django.utils.html import format_html
 from .filters import *
