@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     #'dal_admin_filters',
     'preferences',
     'admin_reorder',
-    'django.contrib.sites',
+    #'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     #'dynamic_preferences',
