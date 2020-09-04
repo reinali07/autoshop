@@ -3,5 +3,6 @@ from . import views
 
 app_name = 'stock'
 urlpatterns = [
-    path('',views.redirect,name='landing_redirect'),
+    path('',views.redirect,name='index'),
+    path('test/', views.test, name='test'),
 ]

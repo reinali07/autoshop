@@ -22,7 +22,11 @@ from django.contrib.sites.models import Site
 
 admin.site.unregister(Site)
 
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
 urlpatterns = [
+	path('sentry-debug/', trigger_error),
     path('',include('landing_page.urls',namespace='landing_page')),
     path('admin/', admin.site.urls),
     path('contacts_db/', include('contacts_db.urls',namespace='contacts_db')),
