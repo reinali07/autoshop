@@ -3,6 +3,7 @@ from clientcars_db.models import Client
 from contacts_db.models import Contact
 from sup_invoices.models import Part
 from datetime import datetime
+from django.utils.timezone import now
 
 # Create your models here.
 class Estimation(models.Model):
@@ -32,7 +33,7 @@ class EstimationLine(models.Model):
     labour_guide = models.FloatField('Labour Guide Hours',default=0.0)
     labour_charged = models.FloatField("Labour Charged ($)",default=0.0,)
     parts = models.ManyToManyField(Part,related_name='estimationline',related_query_name='estimationline',through='LineParts',blank=True)
-    date = models.DateTimeField(default=datetime.now())
+    date = models.DateTimeField(default=now)
 
 '''
 class EstimationParts(models.Model):
@@ -69,7 +70,7 @@ class WorkOrderLine(models.Model):
     labour_charged = models.FloatField("Labour Charged ($)",default=0.0,)
     parts = models.ManyToManyField(Part,related_name='workorderline',related_query_name='workorderline',through='LineParts',blank=True)
     status = models.CharField(max_length=1,choices=[('c','Cancelled'),('o','Ongoing'),('d','Completed'),],default='o')
-    date = models.DateTimeField(default=datetime.now())
+    date = models.DateTimeField(default=now)
     def save(self,*args,**kwargs):
         from stock.models import InventoryPart
         #self.hours_charged = self.labour_guide * global_preferences_registry.manager()['workorder__labour_markup']
@@ -129,7 +130,7 @@ class InvoiceLine(models.Model):
     labour_charged = models.FloatField("Labour Charged ($)",default=0.0,)
     parts = models.ManyToManyField(Part,related_name='invoiceline',related_query_name='invoiceline',through='LineParts',blank=True)
     status = models.CharField(max_length=1,choices=[('b','Billed'),('p','Paid'),],default='b')
-    date = models.DateTimeField(default=datetime.now())
+    date = models.DateTimeField(default=now)
 
 '''
 class InvoiceParts(models.Model):
