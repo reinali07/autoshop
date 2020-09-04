@@ -1,3 +1,2 @@
 /db/.env
 db.sqlite3
-uploads/**/*.*
