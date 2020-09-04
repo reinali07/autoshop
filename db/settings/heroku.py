@@ -3,7 +3,7 @@ Production Settings for Heroku
 """
 
 import environ
-
+import dj_database_url
 # If using in your own project, update the project namespace below
 from db.settings.base import *
 
@@ -20,8 +20,11 @@ SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
+POSTGRES_URL = "HEROKU_POSTGRESQL_TEAL_URL"
+
 # Parse database connection url strings like psql://user:pass@127.0.0.1:8458/db
 DATABASES = {
     # read os.environ['DATABASE_URL'] and raises ImproperlyConfigured exception if not found
     'default': env.db(),
 }
+
