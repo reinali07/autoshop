@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     #'dal_admin_filters',
     'preferences',
     'admin_reorder',
-    #'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     #'dynamic_preferences',
@@ -75,6 +75,8 @@ INSTALLED_APPS = [
     'phone_field', #installed
     'django_extensions', #installed for management
 ]
+
+SITE_ID = 1
 
 USE_DJANGO_JQUERY = True
 
