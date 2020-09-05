@@ -37,7 +37,7 @@ class ClientAdmin(admin.ModelAdmin):
     def vehicle_name(self):
         return str(self.clientvehicle.__str__()) 
     search_fields = ('clientcontact','clientvehicle','vin','licenseplate',)
-    list_display = ['disp_img',last_first,vehicle_name,'licenseplate',phone_number,'delete_car']
+    list_display = [last_first,vehicle_name,'licenseplate',phone_number,'delete_car']
     list_filter = [VINFilter,LicenseFilter,ColourFilter,MakeModelFilter,CommentFilter,PersonNameFilter,BusinessFilter,PhoneFilter,EmailFilter,SocialFilter,]
     #exclude = ['clientcontact',]
     #autocomplete_fields = ['contact','vehicle',]
