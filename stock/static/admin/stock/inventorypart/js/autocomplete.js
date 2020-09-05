@@ -1,4 +1,5 @@
 (function($) {
+    alert('yes');
     'use strict';
     var init = function($element, options) {
         var settings = $.extend({
@@ -22,7 +23,6 @@
             $.extend(settings, {
             	'ac_field_name': $element.parents().filter('.related-widget-wrapper').find('select').attr('name')
             });
-            alert(settings.ac_field_name);
             init($element, settings);
         });
         return this;

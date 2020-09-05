@@ -22,7 +22,7 @@ class ClientAdmin(admin.ModelAdmin):
     autocomplete_fields = ['clientcontact','clientvehicle',]
     def disp_img(self,obj):
         #src = 'images/contacts/people/{0}-{1}.{2}'.format(obj.first_name, obj.last_name,format)
-        return format_html('<div style="width:80px;height:80px;"><img src="/media/{}" style="max-width:100%;max-height:100%;"></div>',obj.image)
+        return format_html('<div style="width:80px;height:80px;"><img src="{}" style="max-width:100%;max-height:100%;"></div>',obj.image.url)
     def delete_car(self, obj):
         return format_html('<a class="btn" href="/admin/clientcars_db/client/{}/delete/">Delete</a>', obj.id)
     def last_first(self):
