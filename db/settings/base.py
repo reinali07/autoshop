@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import django_heroku
 import sentry_sdk
-import environ
-import dj_database_url
 from sentry_sdk.integrations.django import DjangoIntegration
 
 sentry_sdk.init(
@@ -27,28 +25,23 @@ sentry_sdk.init(
     send_default_pii=True
 )
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.environ('SECRET_KEY')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = False
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
-POSTGRES_URL = env('HEROKU_POSTGRESQL_TEAL_URL')
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -127,16 +120,13 @@ WSGI_APPLICATION = 'db.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
 DATABASES = {
-    # read os.environ['DATABASE_URL'] and raises ImproperlyConfigured exception if not found
-    'default': env.db(),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -179,28 +169,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-DEFAULT_FILE_STORAGE = env('DEFAULT_FILE_STORAGE')
-AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
-AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
-AWS_LOCATION = 'static'
-AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {    
-     'CacheControl': 'max-age=86400',
-}
-STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-STATIC_URL='https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-STATICFILES_FINDERS = (
-	'django.contrib.staticfiles.finders.FileSystemFinder',
-	'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
-AWS_DEFAULT_ACL = None
+STATIC_URL = '/static/'
 
 CACHES = {
     'default': {
