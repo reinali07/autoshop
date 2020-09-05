@@ -15,7 +15,7 @@ var $ = django.jQuery.noConflict();
 function hours_changed(mutation)
 {
     $.ajax({
-        url: 'http://127.0.0.1:8000/workorders/get_defaults/',
+        url: '/workorders/get_defaults/',
         method: 'GET',
         data: {
             'value': value,
