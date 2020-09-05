@@ -169,7 +169,7 @@ CACHES = {
 }
 
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = 'https://autoshop-assets.s3.amazonaws.com/media/'
 
 ADMIN_REORDER = (
     # Keep original label and models
