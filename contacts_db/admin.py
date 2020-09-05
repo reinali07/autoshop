@@ -20,7 +20,7 @@ class ContactAdmin(admin.ModelAdmin):
     ordering = ['last_name']
     exclude = ('businesses','contact',)
     fieldsets = [
-        (None,               {'fields': [('first_name','last_name'),('is_tech',),('nickname','image',),'discount_rate','comments','images3',]}),
+        (None,               {'fields': [('first_name','last_name'),('is_tech',),('nickname','image',),'discount_rate','comments',]}),
     ]
     #filter_horizontal = ('businesses',)
     def delete_contact(self, obj):
