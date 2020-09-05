@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     #'django_select2',
     #'dal_admin_filters',
     'storages',
-    's3direct',
+    #'s3direct',
     'preferences',
     'admin_reorder',
     'django.contrib.sites',
