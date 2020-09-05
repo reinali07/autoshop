@@ -4,7 +4,7 @@
 
 (function($) {
     $(document).ready(function(){
-        //alert('wow');
+        alert('wow');
         //$('body').on('change', '.select2-selection', function() {
         //    alert('hey');
         /*
