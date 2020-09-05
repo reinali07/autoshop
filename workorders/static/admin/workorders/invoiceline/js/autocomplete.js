@@ -1,5 +1,5 @@
 (function($) {
-    alert('yes');
+    //alert('yes');
     'use strict';
     var init = function($element, options) {
         var settings = $.extend({
