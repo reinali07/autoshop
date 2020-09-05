@@ -1,14 +1,7 @@
 {% extends 'admin/change_form.html' %}
 {% load static %}
 
-{% block extrastyle %}
-{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static 'admin/sup_invoices/supplierinvoiceparts/css/base.css' %}">
-{% endblock %}
-
 {% block admin_change_form_document_ready %}
 {{ block.super }}
 <script type="text/javascript" src="{% static 'admin/sup_invoices/supplierinvoiceparts/js/formset_handlers.js' %}"></script>
-<script type="text/javascript" src="{% static 'admin/sup_invoices/supplierinvoiceparts/js/inlines.js' %}"></script>
-<script type="text/javascript" src="{% static 'admin/sup_invoices/supplierinvoiceparts/js/inlines.min.js' %}"></script>
 {% endblock %}
