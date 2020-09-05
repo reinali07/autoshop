@@ -2,6 +2,7 @@ from django.db import models
 from phone_field import PhoneField
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey,GenericRelation
+from s3direct.fields import S3DirectField
 
 
 #from clientcars_db import models as client_models
@@ -96,6 +97,7 @@ class Contact(models.Model):
     comments = models.TextField(max_length=200,blank=True)
     image = models.ImageField(upload_to=content_file_name,blank=True,null=True)
     is_tech = models.BooleanField('Technician?',default=False)
+    images3 = S3DirectField(dest='primary_destination', blank=True)
 
     def __str__(self):
         return str(self.first_name) + ' ' + str(self.last_name)

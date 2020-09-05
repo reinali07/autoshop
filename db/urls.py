@@ -31,6 +31,7 @@ urlpatterns = [
     path('sup_invoices/', include('sup_invoices.urls',namespace='sup_invoices')),
     path('stock/', include('stock.urls',namespace='stock')),
     path('workorders/', include('workorders.urls',namespace='workorders')),
+    path('s3direct/', include('s3direct.urls')),
     #path("select2/", include("django_select2.urls")),
 ]
 
