@@ -4,6 +4,7 @@ from .filters import *
 from .inlines import *
 #from contacts_db.inlines import ContactInline
 from django.utils.html import format_html
+from django.templatetags.static import static
 
 # Register your models here.
 
@@ -30,7 +31,7 @@ class ContactAdmin(admin.ModelAdmin):
         if obj.image:
             img = format_html('<div style="width:80px;height:80px;"><img src="{}" style="max-width:100%;max-height:100%;"></div>',obj.image.url)
         else:
-            img = format_html('<div style="width:80px;height:80px;"><img src="{% static \'admin/contacts_db/contact/img/no-image.jpg\' %}" style="max-width:100%;max-height:100%;"></div>')
+            img = format_html('<div style="width:80px;height:80px;"><img src="{}" style="max-width:100%;max-height:100%;"></div>',static('admin/contacts_db/contact/img/no_image.jpg'))
         return img
     def last_first(self):
         return str(self.last_name) + ', ' + str(self.first_name) 
@@ -76,7 +77,7 @@ class BusinessAdmin(admin.ModelAdmin):
         if obj.image:
             img = format_html('<div style="width:80px;height:80px;"><img src="{}" style="max-width:100%;max-height:100%;"></div>',obj.image.url)
         else:
-            img = format_html('<div style="width:80px;height:80px;"><img src="{% static \'admin/contacts_db/business/img/no-image.jpg\' %}" style="max-width:100%;max-height:100%;"></div>')
+            img = format_html('<div style="width:80px;height:80px;"><img src="{}" style="max-width:100%;max-height:100%;"></div>',static('admin/contacts_db/business/img/no_image.jpg'))
         return img
 
 class HideAdmin(admin.ModelAdmin):
