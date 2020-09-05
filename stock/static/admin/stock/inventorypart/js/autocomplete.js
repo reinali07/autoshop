@@ -4,7 +4,6 @@
         var settings = $.extend({
             ajax: {
                 data: function(params) {
-                    alert(options.ac_field_name);
                     return {
                         term: params.term,
                         page: params.page,
@@ -22,7 +21,8 @@
             var $element = $(element);
             $.extend(settings, {
             	'ac_field_name': $element.parents().filter('.related-widget-wrapper').find('select').attr('name')
-        	});
+            });
+            alert(settings.ac_field_name);
             init($element, settings);
         });
         return this;

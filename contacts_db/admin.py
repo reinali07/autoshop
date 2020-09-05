@@ -27,7 +27,7 @@ class ContactAdmin(admin.ModelAdmin):
         return format_html('<a class="btn" href="/admin/contacts_db/contact/{}/delete/">Delete</a>', obj.id)
     def disp_img(self,obj):
         #src = 'images/contacts/people/{0}-{1}.{2}'.format(obj.first_name, obj.last_name,format)
-        return format_html('<div style="width:80px;height:80px;"><img src="/media/{}" style="max-width:100%;max-height:100%;"></div>',obj.image)
+        return format_html('<div style="width:80px;height:80px;"><img src="{% media '{}' %}" style="max-width:100%;max-height:100%;"></div>',obj.image)
     def last_first(self):
         return str(self.last_name) + ', ' + str(self.first_name) 
     list_display = ['disp_img',last_first,'nickname','delete_contact']
