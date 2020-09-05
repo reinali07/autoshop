@@ -25,7 +25,7 @@ class ClientAdmin(admin.ModelAdmin):
         if obj.image:
             img = format_html('<div style="width:80px;height:80px;"><img src="{}" style="max-width:100%;max-height:100%;"></div>',obj.image.url)
         else:
-            img = format_html('<div style="width:80px;height:80px;"><img src="{% static \'admin/contacts_db/business/img/no-image.jpg\' %}" style="max-width:100%;max-height:100%;"></div>')
+            img = format_html('<div style="width:80px;height:80px;"><img src="{% static \'admin/clientcars_db/client/img/no-image.jpg\' %}" style="max-width:100%;max-height:100%;"></div>')
         return img
 
     def delete_car(self, obj):
