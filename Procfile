@@ -1,2 +1,2 @@
 release: python3 manage.py migrate
-web: gunicorn db.wsgi --preload --log-file -
+web: gunicorn autoshop.wsgi --preload --log-file -
