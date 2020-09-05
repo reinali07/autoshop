@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     #'django_addanother',
     #'django_select2',
     #'dal_admin_filters',
+    'storages',
     'preferences',
     'admin_reorder',
     'django.contrib.sites',
@@ -175,7 +176,7 @@ CACHES = {
     }
 }
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 ADMIN_REORDER = (
