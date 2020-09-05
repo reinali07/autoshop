@@ -28,10 +28,10 @@ class ContactAdmin(admin.ModelAdmin):
     def disp_img(self,obj):
         #src = 'images/contacts/people/{0}-{1}.{2}'.format(obj.first_name, obj.last_name,format)
         if obj.image != None:
-            image = format_html('<div style="width:80px;height:80px;"><img src="{}" style="max-width:100%;max-height:100%;"></div>',obj.image.url)
+            img = format_html('<div style="width:80px;height:80px;"><img src="{}" style="max-width:100%;max-height:100%;"></div>',obj.image.url)
         else:
-            image = format_html('<div style="width:80px;height:80px;"><img src="{% static \'admin/contacts_db/contact/img/no-image.jpg\' %}" style="max-width:100%;max-height:100%;"></div>')
-        return image
+            img = format_html('<div style="width:80px;height:80px;"><img src="{% static \'admin/contacts_db/contact/img/no-image.jpg\' %}" style="max-width:100%;max-height:100%;"></div>')
+        return img
     def last_first(self):
         return str(self.last_name) + ', ' + str(self.first_name) 
     list_display = ['disp_img',last_first,'nickname','delete_contact']
@@ -74,10 +74,10 @@ class BusinessAdmin(admin.ModelAdmin):
     def disp_img(self,obj):
         #src = 'images/contacts/people/{0}-{1}.{2}'.format(obj.first_name, obj.last_name,format)
         if obj.image != None:
-            image = format_html('<div style="width:80px;height:80px;"><img src="{}" style="max-width:100%;max-height:100%;"></div>',obj.image.url)
+            img = format_html('<div style="width:80px;height:80px;"><img src="{}" style="max-width:100%;max-height:100%;"></div>',obj.image.url)
         else:
-            image = format_html('<div style="width:80px;height:80px;"><img src="{% static \'admin/contacts_db/business/img/no-image.jpg\' %}" style="max-width:100%;max-height:100%;"></div>')
-        return image
+            img = format_html('<div style="width:80px;height:80px;"><img src="{% static \'admin/contacts_db/business/img/no-image.jpg\' %}" style="max-width:100%;max-height:100%;"></div>')
+        return img
 
 class HideAdmin(admin.ModelAdmin):
     def get_model_perms(self, request):
