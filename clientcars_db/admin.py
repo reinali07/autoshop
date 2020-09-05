@@ -22,9 +22,9 @@ class ClientAdmin(admin.ModelAdmin):
     autocomplete_fields = ['clientcontact','clientvehicle',]
     def disp_img(self,obj):
         #src = 'images/contacts/people/{0}-{1}.{2}'.format(obj.first_name, obj.last_name,format)
-        try:
+        if obj.image:
             img = format_html('<div style="width:80px;height:80px;"><img src="{}" style="max-width:100%;max-height:100%;"></div>',obj.image.url)
-        except:
+        else:
             img = format_html('<div style="width:80px;height:80px;"><img src="{% static \'admin/contacts_db/business/img/no-image.jpg\' %}" style="max-width:100%;max-height:100%;"></div>')
         return img
 
@@ -37,7 +37,7 @@ class ClientAdmin(admin.ModelAdmin):
     def vehicle_name(self):
         return str(self.clientvehicle.__str__()) 
     search_fields = ('clientcontact','clientvehicle','vin','licenseplate',)
-    list_display = [last_first,vehicle_name,'licenseplate',phone_number,'delete_car']
+    list_display = ['disp_img',last_first,vehicle_name,'licenseplate',phone_number,'delete_car']
     list_filter = [VINFilter,LicenseFilter,ColourFilter,MakeModelFilter,CommentFilter,PersonNameFilter,BusinessFilter,PhoneFilter,EmailFilter,SocialFilter,]
     #exclude = ['clientcontact',]
     #autocomplete_fields = ['contact','vehicle',]
