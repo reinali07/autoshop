@@ -101,6 +101,7 @@ class PartAdmin(admin.ModelAdmin):
         #print(queryset.filter(internal=None))
         #print(request.GET['field_name'])
         #print(request.GET)
+        #print(request.GET.get['page'])
         try:
             if 'InventoryPart_sup_part' in request.GET['field_name']:
                 queryset = queryset.filter(internal=None)

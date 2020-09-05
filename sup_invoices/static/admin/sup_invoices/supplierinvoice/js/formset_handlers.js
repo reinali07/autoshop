@@ -4,7 +4,7 @@
 
 (function($) {
     $(document).ready(function(){
-        alert('wow');
+        //alert('wow');
         //$('body').on('change', '.select2-selection', function() {
         //    alert('hey');
         /*
@@ -39,12 +39,13 @@ function part_changed(mutation,unit_tag)
             }
     });*/
     $.ajax({
-        url: 'http://127.0.0.1:8000/sup_invoices/get_units/',
+        url: '/sup_invoices/get_units/',
         method: 'GET',
         data: {
             id: mutation.target.getAttribute('title'),
         },
         success: function(result){
+            //alert(result.unit);
             unit_tag.innerHTML = result.unit;
             observer.observe(targetNode, observerOptions);
         }

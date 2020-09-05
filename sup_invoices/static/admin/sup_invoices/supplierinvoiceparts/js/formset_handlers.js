@@ -39,7 +39,7 @@ function part_changed(mutation,unit_tag)
             }
     });*/
     $.ajax({
-        url: 'http://127.0.0.1:8000/sup_invoices/get_units/',
+        url: '/sup_invoices/get_units/',
         method: 'GET',
         data: {
             id: mutation.target.getAttribute('title'),

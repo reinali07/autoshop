@@ -9,7 +9,7 @@ var $ = django.jQuery.noConflict();
 function part_changed(mutation,quantity_tag)
 {
     $.ajax({
-        url: 'http://127.0.0.1:8000/stock/get_quantity/',
+        url: '/stock/get_quantity/',
         method: 'GET',
         data: {
             id: mutation.target.getAttribute('title'),
