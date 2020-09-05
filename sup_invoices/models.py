@@ -136,6 +136,8 @@ class SupplierInvoice(models.Model):
         verbose_name = 'Supplier Invoice'
 
 class Prices(models.Model):
+    class Meta:
+        verbose_name_plural = "Prices"
     def __str__(self):
         return str(self.id)
     history = models.ManyToManyField(Part,related_name='prices',through='SupplierInvoiceParts',blank=True)
