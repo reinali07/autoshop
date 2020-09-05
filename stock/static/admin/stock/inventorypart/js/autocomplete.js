@@ -4,6 +4,7 @@
         var settings = $.extend({
             ajax: {
                 data: function(params) {
+                    alert(options.ac_field_name);
                     return {
                         term: params.term,
                         page: params.page,
