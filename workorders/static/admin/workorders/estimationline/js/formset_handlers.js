@@ -21,8 +21,8 @@ function hours_changed(mutation)
             'value': value,
         },
         success: function(result){
-            //alert(result.hours);
-            //alert(result.labour);
+            alert(result.hours);
+            alert(result.labour);
             $('#id_labour_charged').val(result.labour);
             $('#id_hours_charged').val(result.hours);
         }
