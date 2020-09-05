@@ -144,11 +144,11 @@ class SupplierInvoiceParts(models.Model):
     prices = models.ForeignKey(Prices,on_delete=models.SET_NULL,null=True,blank=True)
     supplier_invoice = models.ForeignKey(SupplierInvoice,on_delete=models.CASCADE,null=True)
     part = models.ForeignKey(Part,on_delete=models.CASCADE,blank=False,null=False)
-    quantity = models.PositiveIntegerField(default=1)
+    quantity = models.PositiveIntegerField(default=0)
     returnedqty = models.PositiveIntegerField('Total returned',default=0,null=True,blank=True)
     retqty = models.PositiveIntegerField('Return Qty',null=True,blank=True,default=0)
-    list_price = models.DecimalField(decimal_places=2,max_digits=7,blank=True,null=True)
-    cost = models.DecimalField(decimal_places=2,max_digits=7)
+    list_price = models.DecimalField(decimal_places=2,max_digits=7,blank=True,null=True,default=0)
+    cost = models.DecimalField(decimal_places=2,max_digits=7,default=0)
     core = models.BooleanField('Core?',default=False)
     is_promo = models.BooleanField('Promotion?',default=False)
     package_size = models.FloatField(default=0)
@@ -159,12 +159,16 @@ class SupplierInvoiceParts(models.Model):
     def save(self,*args,**kwargs):
         from stock.models import InventoryPart
         instance = super(SupplierInvoiceParts, self).save(*args, **kwargs)
-        accum = 0
-        links = SupplierInvoiceParts.objects.filter(supplier_invoice__reference=self.supplier_invoice.reference,part=self.part)
-        for link in links.filter(supplier_invoice__is_return=True):
-            accum += link.retqty
-        #print(accum)
-        links.update(returnedqty=accum)
+        #print(kwargs)
+        try:
+            accum = 0
+            links = SupplierInvoiceParts.objects.filter(supplier_invoice__reference=self.supplier_invoice.reference,part=self.part)
+            for link in links.filter(supplier_invoice__is_return=True):
+                accum += link.retqty
+            #print(accum)
+            links.update(returnedqty=accum)
+        except:
+            pass
         try:
             self.part.internal.save()
             #InventoryPart.objects.get(sup_part=self.part).save()

@@ -1,9 +1,11 @@
 
 (function($) {
     $(document).ready(function(){
+        alert('docready');
         $('#id_labour_guide').change(function(){
-            //alert($('#id_labour_guide'));
+            alert($('#id_labour_guide'));
             value = $('#id_labour_guide').val();
+            alert(value);
             hours_changed(value);
         });
     });
@@ -14,6 +16,7 @@ var $ = django.jQuery.noConflict();
 
 function hours_changed(mutation)
 {
+    alert('called');
     $.ajax({
         url: '/workorders/get_defaults/',
         method: 'GET',
@@ -21,7 +24,7 @@ function hours_changed(mutation)
             'value': value,
         },
         success: function(result){
-            //alert(result.hours);
+            alert(result);
             //alert(result.labour);
             $('#id_labour_charged').val(result.labour);
             $('#id_hours_charged').val(result.hours);

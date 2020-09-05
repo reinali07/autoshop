@@ -47,5 +47,5 @@ class GeneratePdf(generic.View):
         return response
 
 def get_defaults(request):
-    data = {'hours':float(request.GET.get('value')) * preferences.GlobalPreferences.labour_markup,'labour':float(request.GET.get('value')) * preferences.GlobalPreferences.labour_markup * preferences.GlobalPreferences.labour_rate}
+    data = {'hours':float(request.GET.get('value')) * preferences.GlobalPreference.labour_markup,'labour':float(request.GET.get('value')) * preferences.GlobalPreference.labour_markup * preferences.GlobalPreference.labour_rate}
     return JsonResponse(data)
