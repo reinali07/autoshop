@@ -31,7 +31,7 @@ DATABASES = {
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
-S3_BUCKET_NAME = env('S3_BUCKET_NAME')
+S3_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 AWS_S3_OBJECT_PARAMETERS = {
@@ -40,3 +40,12 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'autoshop.storage_backends.MediaStorage'  # <-- here is where we reference it
 
+sentry_sdk.init(
+    dsn=env('SENTRY_DSN'),
+    integrations=[DjangoIntegration()],
+    traces_sample_rate=1.0,
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
+)
