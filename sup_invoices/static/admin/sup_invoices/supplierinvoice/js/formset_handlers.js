@@ -4,7 +4,7 @@
 
 (function($) {
     $(document).ready(function(){
-        alert('wow');
+        //alert('wow');
         //$('body').on('change', '.select2-selection', function() {
         //    alert('hey');
         /*
@@ -45,6 +45,7 @@ function part_changed(mutation,unit_tag)
             id: mutation.target.getAttribute('title'),
         },
         success: function(result){
+            alert(result.unit);
             unit_tag.innerHTML = result.unit;
             observer.observe(targetNode, observerOptions);
         }
@@ -63,17 +64,17 @@ function callback(mutations) {
     for (let mutation of mutations) {
         if (mutation.type === 'attributes') { 
             if (mutation.oldValue != mutation.target.getAttribute('title')){
-                //alert(mutation.target.getAttribute('id'));
+                alert(mutation.target.getAttribute('id'));
                 targetSiblings = mutation.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children
                 for (i = 0; i < targetSiblings.length; i++) {
                     if (targetSiblings[i].getAttribute('class') == 'field-unit' ) {
                         c = targetSiblings[i].children;
                         for (j=0;j<c.length;j++) {
-                            //alert(c[j].getAttribute('class'))
+                            alert(c[j].getAttribute('class'))
                             if (c[j].getAttribute('class') == 'unit_tag') {
                                 //alert('ok');
                                 unit_tag = c[j];
-                                //alert(unit_tag);
+                                alert(unit_tag);
                             };
                         };
                     };
