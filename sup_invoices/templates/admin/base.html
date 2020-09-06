@@ -75,7 +75,7 @@
     <!-- Content -->
     <div id="content" class="{% block coltype %}colM{% endblock %}">
         {% block pretitle %}{% endblock %}
-        {% block content_title %}{% if title %}<h1>{% trans 'Autoshop Manager Console' %}</h1>{% endif %}{% endblock %}
+        {% block content_title %}{% if title %}<h1>{% if title == 'Site Administration' %}{% trans 'Autoshop Manager Console' %}{% else %}{{ title }}{% endif %}</h1>{% endif %}{% endblock %}
         {% block content %}
         {% block object-tools %}{% endblock %}
         {{ content }}
