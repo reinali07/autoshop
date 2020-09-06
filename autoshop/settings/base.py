@@ -177,7 +177,7 @@ ADMIN_REORDER = (
     # Exclude models
     {'app': 'contacts_db','label':'Contacts', 'models': ('contacts_db.Contact','contacts_db.Business',)},
 
-    {'app': 'vehicles_db','label': 'Vehicle Models', 'models': ('vehicles_db.Vehicles',)},
+    {'app': 'vehicles_db','label': 'Vehicle Models', 'models': ('vehicles_db.Vehicle',)},
     {'app': 'clientcars_db','label': 'Clients', 'models': ('clientcars_db.Client',)},
     {'app': 'stock','label': 'Inventory', 'models': ('stock.InventoryPart',)},
     {'app': 'sup_invoices','label':'Part Purchases', 'models': ('sup_invoices.SupplierInvoice','sup_invoices.SupplierInvoiceParts',)},
