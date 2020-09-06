@@ -143,7 +143,7 @@ LANGUAGES = (
     ('zh-cn', u'简体中文'), # instead of 'zh-CN'
 )
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Vancouver'
 
 USE_I18N = True
 
