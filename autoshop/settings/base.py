@@ -113,7 +113,7 @@ WSGI_APPLICATION = 'autoshop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.autoshop.backends.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'autoshop.sqlite3'),
     }
 }
