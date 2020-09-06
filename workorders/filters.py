@@ -71,7 +71,9 @@ class TechnicianFilter(InputFilter):
         any_name = Q()
         for bit in term.split():
             any_name &= (
-                Q(technician__icontains=bit)
+                Q(technician__first_name__icontains=bit) |
+                Q(technician__last_name__icontains=bit)  |
+                Q(technician__nickname__icontains=bit)
             )        
         return queryset.filter(any_name).distinct()
 
