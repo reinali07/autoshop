@@ -4,7 +4,7 @@
 <head>
 <title>{% block title %}{% endblock %}</title>
 <link rel="shortcut icon" type="image/x-icon" href="{% static 'admin/img/favicon.ico' %}">
-<link rel="icon" href="{% static '/admin/img/favicon.ico' %}" type="image/x-icon">
+<link rel="icon" href="{% static 'admin/img/favicon.ico' %}" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
 {% block extrastyle %}{% endblock %}
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">{% endif %}
