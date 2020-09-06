@@ -25,6 +25,10 @@ sentry_sdk.init(
     send_default_pii=True
 )
 
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CONN_MAX_AGE = 60
+SECURE_SSL_REDIRECT = True
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
