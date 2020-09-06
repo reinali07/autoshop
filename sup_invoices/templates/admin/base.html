@@ -59,7 +59,7 @@
     {% block breadcrumbs %}
     <div class="breadcrumbs">
     <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-    {% if title %} &rsaquo; {{ title }}{% endif %}
+    {% if title %} &rsaquo; Autoshop Manager Console{% endif %}
     </div>
     {% endblock %}
     {% endif %}
@@ -75,7 +75,7 @@
     <!-- Content -->
     <div id="content" class="{% block coltype %}colM{% endblock %}">
         {% block pretitle %}{% endblock %}
-        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+        {% block content_title %}{% if title %}<h1>Autoshop Manager Console</h1>{% endif %}{% endblock %}
         {% block content %}
         {% block object-tools %}{% endblock %}
         {{ content }}
