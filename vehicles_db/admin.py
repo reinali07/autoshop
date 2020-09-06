@@ -37,7 +37,7 @@ class VehicleAdmin(admin.ModelAdmin):
     def delete_vehicle(self, obj):
         return format_html('<a class="btn" href="/admin/vehicles_db/vehicle/{}/delete/">Delete</a>', obj.id)
     
-    list_display = ['__str__','vehicle','delete_vehicle']
+    list_display = ['vehicle','delete_vehicle']
     #list_filter = [YearFilter,MakeFilter,VehicleModelFilter,TrimFilter,EngineSizeFilter,EngineCodeFilter]
     list_filter = [YearFilter,MakeModelFilter,TrimFilter,EngineSizeFilter,EngineCodeFilter]
 '''
