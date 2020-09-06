@@ -1,5 +1,4 @@
 **.env
 **.sqlite3
-static/
 *.csv
 **.pyc
