@@ -16,7 +16,7 @@ import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
 sentry_sdk.init(
-    dsn="https://17093c65aadb488691ef548ddb3eeaca@o443881.ingest.sentry.io/5418218",
+    dsn="https://17093c65aadb488691ef548ddb3eeaca@o443881.ingest.sentry.io/5418795",
     integrations=[DjangoIntegration()],
     traces_sample_rate=1.0,
 
@@ -34,9 +34,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
 SECRET_KEY = os.environ['SECRET_KEY']
-
-# SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
